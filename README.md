@@ -11,7 +11,7 @@ python 3.0 &
 pytorch > 1.9
 
 # Dataset Annotation
-The dataset boundary box annotations are in the directory /dataset/. It provides the annotations of training and testing sets individualy. Once you downloaded the dataset, you can have also a quick toturial through the provided jupyter notbook at `/dataset/dataset_processing.ipynb`
+The dataset boundary box annotations are in the directory /dataset/. It provides the annotations of training and testing sets individualy. Once you downloaded the dataset, you can have also a quick toturial through the provided jupyter notebook at `/dataset/dataset_processing.ipynb`
 
 # To Train
 Will be released soon!
