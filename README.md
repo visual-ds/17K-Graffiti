@@ -6,7 +6,7 @@ See a quick demo of our developed graffiti detector on the provided jupyter note
 # Download Dataset and Pre-trained Weights:
 Will be announced soon!
 
-# Requirments
+# Requirements
 python 3.0 &
 pytorch > 1.9
 
