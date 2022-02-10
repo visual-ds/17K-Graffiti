@@ -1,5 +1,7 @@
 import torch
 import torchvision
+from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+
 from torchvision.utils import make_grid
 from torchvision import transforms as T
 from torch.utils.data import Dataset
@@ -10,13 +12,17 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 import os
 import numpy as np
+import warnings
+warnings.filterwarnings('ignore')
+
 #GPU / CPU
-GPU = True
-device_idx = 0
-if GPU:
-    device = torch.device("cuda:" + str(device_idx) if torch.cuda.is_available() else "cpu")
-else:
-    device = torch.device("cpu")
+def SET_DEVICE(GPU, device_idx = 0):
+    if GPU:
+        device = torch.device("cuda:" + str(device_idx) if torch.cuda.is_available() else "cpu")
+    else:
+        device = torch.device("cpu")
+    return device
+
 
 #transformers
 def get_train_transform():
@@ -28,6 +34,15 @@ def get_test_transform():
     return A.Compose([
         ToTensorV2(p=1.0)
     ], bbox_params={'format': 'pascal_voc', 'label_fields': ['labels']})
+
+
+# get the model
+def get_model_FRCNN():
+    # model definitions and configs
+    model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+    in_features = model.roi_heads.box_predictor.cls_score.in_features
+    model.roi_heads.box_predictor = FastRCNNPredictor(in_features, 2)
+    return model
 
 
 def collate_fn(batch):
@@ -44,7 +59,7 @@ def plot_img_bbox(tensor, target,width=6):
     from numpy import array as to_numpy_array
     return torch.from_numpy(to_numpy_array(im))
 
-#this class is used to construct our graffiti datasets over loading
+#this class is used to construct our graffiti dataset
 class GraffitiDataset(Dataset):
     def __init__(self, image_dir, imagedata,w,h, transforms = None, file_extenstion='.jpg'):
         super().__init__()
@@ -107,3 +122,47 @@ class GraffitiDataset(Dataset):
 
     def __len__(self)->int:
         return len(self.imagedata)
+
+
+def intersection_over_union(gt_box, pred_box):
+    inter_box_top_left = [max(gt_box[0], pred_box[0]), max(gt_box[1], pred_box[1])]
+    inter_box_bottom_right = [min(gt_box[0] + gt_box[2], pred_box[0] + pred_box[2]),
+                              min(gt_box[1] + gt_box[3], pred_box[1] + pred_box[3])]
+
+    inter_box_w = inter_box_bottom_right[0] - inter_box_top_left[0]
+    inter_box_h = inter_box_bottom_right[1] - inter_box_top_left[1]
+
+    intersection = inter_box_w * inter_box_h
+    union = gt_box[2] * gt_box[3] + pred_box[2] * pred_box[3] - intersection
+
+    iou = intersection / union
+
+    return iou, intersection, union
+
+
+def average_precision(prediction, targets, index_on_target, iou_threshold):
+    TP = torch.zeros(len(prediction['boxes']))
+    FP = torch.zeros(len(prediction['boxes']))
+    for gt_idx in range(len(targets[index_on_target]['boxes'])):
+        best_iou = 0.0
+        for prd_idx in range(len(prediction['boxes'])):
+            iou, intersection, union = intersection_over_union(
+                targets[index_on_target]['boxes'][gt_idx].cpu().detach().numpy(),
+                prediction['boxes'][prd_idx].cpu().detach().numpy())
+            if iou >= best_iou:
+                best_iou = iou
+
+            if best_iou >= iou_threshold:
+                TP[prd_idx] = 1.0
+            else:
+                FP[prd_idx] = 1.0
+
+    epsilon = 1e-6
+    TP_cumsum = torch.cumsum(TP, dim=0)
+    FP_cumsum = torch.cumsum(FP, dim=0)
+    recalls = TP_cumsum / (len(np.where(TP == 1)[0]) + epsilon)
+    precisions = TP_cumsum / (TP_cumsum + FP_cumsum + epsilon)
+    precisions = torch.cat((torch.tensor([1]), precisions))
+    recalls = torch.cat((torch.tensor([0]), recalls))
+
+    return torch.trapz(precisions, recalls)

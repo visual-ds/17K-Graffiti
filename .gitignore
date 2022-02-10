@@ -21,12 +21,16 @@ sdist/
 var/
 wheels/
 .idea/
+__pycache__/
+.ipynb_checkpoints/
 pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
+README.md
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
