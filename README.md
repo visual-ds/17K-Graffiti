@@ -19,12 +19,12 @@ Will be released soon!
 # To Evaluate
 Use the following commande line to evaluate the performance of the graffiti detection model on the provided IOU:
 
-`python to_eval.py --testImages <Path to test set>
+```python to_eval.py --testImages <Path to test set>
                    --testBboxs <Path to test bboxes>
                    --weights <path to pretrained model weights file>
                    --gpu True
                    --iou <given iou>
-                   --batchSize 16`
+                   --batchSize 16```
 
 # To Perform Detection
 Will be released soon!
