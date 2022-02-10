@@ -14,7 +14,14 @@ pytorch > 1.9
 The dataset boundary box annotations are in the directory /dataset/. It provides the annotations of training and testing sets individualy. Once you downloaded the dataset, you can have also a quick toturial through the provided jupyter notebook at `/dataset/dataset_processing.ipynb`
 
 # To Train
-Will be released soon!
+In order to train the graffiti model from the scratch run the following code:
+```
+python to_train.py --train_image <Path to training set> 
+                   --train_bboxs <Path to training bboxs> 
+                   --gpu=True 
+                   --batchSize 16
+
+```
 
 # To Evaluate
 Use the following commande line to evaluate the performance of the graffiti detection model on the provided IOU:
