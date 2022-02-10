@@ -59,6 +59,23 @@ def plot_img_bbox(tensor, target,width=6):
     from numpy import array as to_numpy_array
     return torch.from_numpy(to_numpy_array(im))
 
+
+def draw_bounding_box_with_scores(tensor, bboxes, scores, width=4, thresh=0.8):
+    ndarr = tensor.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to('cpu', torch.uint8).numpy()
+    im = Image.fromarray(ndarr)
+    draw = ImageDraw.Draw(im)
+
+    true_bboxes = 0
+    for bbox, src in zip(bboxes, scores):
+        if src < thresh: continue
+        true_bboxes += 1
+        draw.rectangle(bbox, width=width, outline='red')
+
+    from numpy import array as to_numpy_array
+    return torch.from_numpy(to_numpy_array(im)), true_bboxes
+
+
+
 #this class is used to construct our graffiti dataset
 class GraffitiDataset(Dataset):
     def __init__(self, image_dir, imagedata,w,h, transforms = None, file_extenstion='.jpg'):

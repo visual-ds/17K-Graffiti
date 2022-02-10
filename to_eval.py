@@ -20,7 +20,6 @@ parser.add_argument('--gpu', required=False, default=True, help='True: if to use
 parser.add_argument('--deviceIdx', required=False, default=0, help='Set the gpu device index. Default is 0.')
 parser.add_argument('--imageSize', required=False, default=(224,224), help='Set the image size.')
 parser.add_argument('--batchSize', required=False, default=16, help='Set the batch size for training.')
-parser.add_argument('--lrn', required=False, default=0.0001, help='Set the learning rate for training.')
 
 args = parser.parse_args()
 PATH_2_TESTING_IMGS = args.testImages
