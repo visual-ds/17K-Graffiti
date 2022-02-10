@@ -6,13 +6,13 @@ See a quick demo of our developed graffiti detector on the provided jupyter note
 # Download Dataset and Pre-trained Weights:
 The 17K-Graffiti dataset and its pre-trained weights are available at this [link](https://zenodo.org/record/5899631).
 
-# Requirements
-python 3.0 &
-pytorch > 1.9
-
 # Dataset Annotation
 The dataset boundary box annotations are in the directory /dataset/. It provides the annotations of training and testing sets individualy. Once you downloaded the dataset as well as its pre-trained weights, you can further have a quick toturial through the provided jupyter notebook at:
 `/dataset/dataset_processing.ipynb`
+
+# Requirements
+python 3.0 &
+pytorch > 1.9
 
 # To Train
 In order to train the graffiti model from the scratch run the following code:
@@ -36,9 +36,18 @@ python to_eval.py --testImages <Path to testing set>
 ```
 
 # To Perform Detection
-Will be released soon!
+To perform the graffiti detection on the set of images, use the following command. It will output the detected bounday boxes on the images and store the bbox information on a CSV file within the specified output directory. One can also set the image dimension and the model confidence on detection.  
 
-# Corresponding bibtex to this repository
+```
+python to_detect.py --imageDir <Path to images> 
+                    --outDir <Path to output directory>  
+                    --weights <path to pretrained model weights file>
+                    --imgWidth <image width> 
+                    --imgHeight <image height> 
+                    --confidence <prediction confidence>
+```
+
+# Corresponding bibtex:
 Will be available soon!
 
 # Contact us  
