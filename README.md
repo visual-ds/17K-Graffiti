@@ -4,7 +4,7 @@ This repository provides the graffiti dataset (17K-Graffiti) with the accepted p
 See a quick demo of our developed graffiti detector on the provided jupyter notebook at `demo.ipynb`. 
 
 # Download Dataset and Pre-trained Weights:
-Will be announced soon!
+The 17K-Graffiti dataset and its pre-trained weights are available at this [link](https://zenodo.org/record/5899631).
 
 # Requirements
 python 3.0 &
@@ -25,5 +25,5 @@ Will be released soon!
 # Corresponding bibtex to this repository
 Will be reported soon!
 
-# Contact us
+# Contact us  
 For any issue please kindly email to...
