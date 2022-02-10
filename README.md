@@ -39,7 +39,7 @@ python to_eval.py --testImages <Path to testing set>
 Will be released soon!
 
 # Corresponding bibtex to this repository
-Will be reported soon!
+Will be available soon!
 
 # Contact us  
 For any issue please kindly email to `bahram [dot] lavi [at] fgv [dot] br`
