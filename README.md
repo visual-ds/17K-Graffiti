@@ -18,7 +18,7 @@ In order to train the graffiti model from the scratch run the following code:
 ```
 python to_train.py --train_image <Path to training set> 
                    --train_bboxs <Path to training bboxs> 
-                   --gpu=True 
+                   --gpu True 
                    --batchSize 16
 ```
 
