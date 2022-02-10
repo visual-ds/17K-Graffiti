@@ -26,8 +26,8 @@ python to_train.py --train_image <Path to training set>
 Use the following commande line to evaluate the performance of the graffiti detection model on the provided IOU:
 
 ```
-python to_eval.py --testImages <Path to test set>
-                   --testBboxs <Path to test bboxes>
+python to_eval.py --testImages <Path to testing set>
+                   --testBboxs <Path to testing bboxes>
                    --weights <path to pretrained model weights file>
                    --gpu True
                    --iou <given iou>
