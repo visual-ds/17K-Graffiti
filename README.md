@@ -41,4 +41,4 @@ Will be released soon!
 Will be reported soon!
 
 # Contact us  
-For any issue please kindly email to bahram[dot]lavi[at]fgv[dot]br
+For any issue please kindly email to bahram [dot] lavi [at] fgv [dot] br
