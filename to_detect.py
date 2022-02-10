@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import argparse
 
-parser = argparse.ArgumentParser(description='Evaluate Faster R-CNN on detecting graffiti.')
+parser = argparse.ArgumentParser(description='Validate the graffiti detector.')
 parser.add_argument('--imageDir', required=True,
                     metavar="/path/to/image/directory/",
                     help='Path to set of images.')
