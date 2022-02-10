@@ -27,11 +27,11 @@ Use the following commande line to evaluate the performance of the graffiti dete
 
 ```
 python to_eval.py --testImages <Path to testing set>
-                   --testBboxs <Path to testing bboxes>
-                   --weights <path to pretrained model weights file>
-                   --gpu True
-                   --iou <given iou>
-                   --batchSize 16
+                  --testBboxs <Path to testing bboxes>
+                  --weights <path to pretrained model weights file>
+                  --gpu True
+                  --iou <given iou>
+                  --batchSize 16
 ```
 
 # To Perform Detection
