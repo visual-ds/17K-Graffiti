@@ -20,7 +20,6 @@ python to_train.py --train_image <Path to training set>
                    --train_bboxs <Path to training bboxs> 
                    --gpu=True 
                    --batchSize 16
-
 ```
 
 # To Evaluate
@@ -42,4 +41,4 @@ Will be released soon!
 Will be reported soon!
 
 # Contact us  
-For any issue please kindly email to...
+For any issue please kindly email to bahram[dot]lavi[at]fgv[dot]br
