@@ -48,7 +48,20 @@ python to_detect.py --imageDir <Path to images>
 ```
 
 # Corresponding bibtex:
-Will be available soon!
+
+```
+@conference{visapp22,
+author={Bahram Lavi. and Eric Tokuda. and Felipe Moreno{-}Vera. and Luis Nonato. and Claudio Silva. and Jorge Poco.},
+title={17K-Graffiti: Spatial and Crime Data Assessments in São Paulo City},
+booktitle={Proceedings of the 17th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 4: VISAPP,},
+year={2022},
+pages={968-975},
+publisher={SciTePress},
+organization={INSTICC},
+doi={10.5220/0010883300003124},
+isbn={978-989-758-555-5},
+}
+```
 
 # Contact us  
 For any issue please kindly email to `bahram [dot] lavi [at] fgv [dot] br`
