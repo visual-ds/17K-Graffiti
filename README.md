@@ -3,6 +3,13 @@ This repository provides the graffiti dataset (17K-Graffiti) with the accepted p
 
 See a quick demo of our developed graffiti detector on the provided jupyter notebook at `demo.ipynb`. 
 
+# Install
+
+```
+    conda env create --name graffiti --file requirements.yaml 
+    conda env export > requirements.yaml
+```
+
 # Download Dataset and Pre-trained Weights:
 The 17K-Graffiti dataset and its pre-trained weights are available at this [link](https://zenodo.org/record/5899631).
 
