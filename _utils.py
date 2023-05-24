@@ -30,6 +30,7 @@ def get_train_transform():
         A.HorizontalFlip(0.5),
         ToTensorV2(p=1.0)],
         bbox_params={'format': 'pascal_voc', 'label_fields': ['labels']})
+
 def get_test_transform():
     return A.Compose([
         ToTensorV2(p=1.0)
